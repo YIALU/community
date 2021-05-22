@@ -1,0 +1,114 @@
+package com.liuxuhuang.community.entity;
+
+import io.swagger.annotations.ApiModel;
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+import java.io.Serializable;
+
+/**
+ * (Visit)实体类
+ *
+ * @author liuxuhuang
+ * @since 2021-05-19 20:17:31
+ */
+@ApiModel
+@Component
+public class Visit implements Serializable {
+    private static final long serialVersionUID = 328655631982382462L;
+
+    private int id;
+    /**
+     * 访客姓名
+     */
+    private String visitorName;
+    /**
+     * 访客电话
+     */
+    private String visitorTel;
+    /**
+     * 到访原因
+     */
+    private String visitReason;
+    /**
+     * 进入时间
+     */
+    private Date enterTime;
+    /**
+     * 离开时间
+     */
+    private Date leaveTime;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getVisitorName() {
+        return visitorName;
+    }
+
+    public void setVisitorName(String visitorName) {
+        this.visitorName = visitorName;
+    }
+
+    public String getVisitorTel() {
+        return visitorTel;
+    }
+
+    public void setVisitorTel(String visitorTel) {
+        this.visitorTel = visitorTel;
+    }
+
+    public String getVisitReason() {
+        return visitReason;
+    }
+
+    public void setVisitReason(String visitReason) {
+        this.visitReason = visitReason;
+    }
+
+    public Date getEnterTime() {
+        return enterTime;
+    }
+
+    public void setEnterTime(Date enterTime) {
+        this.enterTime = enterTime;
+    }
+
+    public Date getLeaveTime() {
+        return leaveTime;
+    }
+
+    public void setLeaveTime(Date leaveTime) {
+        this.leaveTime = leaveTime;
+    }
+
+    public Visit() {
+    }
+
+    public Visit(int id, String visitorName, String visitorTel, String visitReason, Date enterTime, Date leaveTime) {
+        this.id = id;
+        this.visitorName = visitorName;
+        this.visitorTel = visitorTel;
+        this.visitReason = visitReason;
+        this.enterTime = enterTime;
+        this.leaveTime = leaveTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Visit{" +
+                "id=" + id +
+                ", visitorName='" + visitorName + '\'' +
+                ", visitorTel='" + visitorTel + '\'' +
+                ", visitReason='" + visitReason + '\'' +
+                ", enterTime=" + enterTime +
+                ", leaveTime=" + leaveTime +
+                '}';
+    }
+}
