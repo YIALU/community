@@ -23,7 +23,7 @@ public interface UserDao {
      */
     User selectById(int userId);
 
-    User login(String username, String password);
+    User login(User user);
 
     /**
      * 分页查询

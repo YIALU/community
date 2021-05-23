@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User login(String username, String password) {
-        return this.userDao.login(username, password);
+    public User login(User user) {
+        return this.userDao.login(user);
     }
 
     /**

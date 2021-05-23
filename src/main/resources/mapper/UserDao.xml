@@ -26,7 +26,7 @@
     <select id="login" resultMap="UserMap">
         select
         <include refid="Base_Column_List"></include>
-        from user where user_name=#{userName} and password =#{password}
+        from user where user_tel = #{userTel} and password =#{password}
     </select>
     <!-- 分页查询 -->
     <select id="selectPage" resultMap="UserMap">

@@ -39,18 +39,25 @@ public class UserController {
     @PostMapping(value = "login")
     @ResponseBody
     public Map<String, Object> selectOne(@RequestBody User u) {
-        User user = userService.login(u.getUserName(), u.getPassword());
-
-        if (user.getToken() != null) {
-            map.put("code", 200);
-            map.put("message", "登录成功");
-            map.put("success", true);
-            map.put("data", user.getToken());
-        } else {
+        String phone = u.getUserTel().replace(" ", "");
+        String pwd = u.getPassword().replace(" ", "");
+        User user1 = new User();
+        user1.setUserTel(phone);
+        user1.setPassword(pwd);
+        User user = null;
+        user = userService.login(user1);
+        System.out.println("user=" + user);
+        if (user.getToken() == null || user.getToken().equals("null") || user.equals("null") || user == null) {
             map.put("code", 201);
             map.put("message", "登录失败");
             map.put("success", false);
             map.put("data", null);
+        } else {
+            map.put("code", 200);
+            map.put("message", "登录成功");
+            map.put("success", true);
+            map.put("data", user.getToken());
+            map.put("type", user.getUserType());
         }
         return map;
     }
