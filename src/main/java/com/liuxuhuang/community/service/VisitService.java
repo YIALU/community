@@ -35,7 +35,7 @@ public interface VisitService {
      * @param visit 实例对象
      * @return 实例对象
      */
-    Visit insert(Visit visit);
+    boolean insert(Visit visit);
 
     /**
      * 修改数据
@@ -43,7 +43,7 @@ public interface VisitService {
      * @param visit 实例对象
      * @return 实例对象
      */
-    Visit update(Visit visit);
+    boolean update(Visit visit);
 
     /**
      * 通过主键删除数据
@@ -53,4 +53,19 @@ public interface VisitService {
      */
     boolean deleteById(int id);
 
+    /**
+     * 通过名称删除数据
+     *
+     * @param visitorName
+     * @return
+     */
+    boolean deleteByName(String visitorName);
+
+    /**
+     * 根据名称查询数据
+     *
+     * @param visitorName
+     * @return
+     */
+    Visit queryByName(String visitorName);
 }

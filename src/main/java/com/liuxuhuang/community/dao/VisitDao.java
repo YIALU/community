@@ -2,6 +2,7 @@ package com.liuxuhuang.community.dao;
 
 import com.liuxuhuang.community.entity.Visit;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,6 +12,7 @@ import java.util.List;
  * @author liuxuhuang
  * @since 2021-05-19 20:17:31
  */
+@Repository
 public interface VisitDao {
 
     /**
@@ -79,5 +81,20 @@ public interface VisitDao {
      */
     int deleteById(int id);
 
+    /**
+     * 根据名称删除数据
+     *
+     * @param visitorName
+     * @return
+     */
+    int deleteByName(String visitorName);
+
+    /**
+     * 根据名称查询数据
+     *
+     * @param visitorName
+     * @return
+     */
+    Visit queryByName(String visitorName);
 }
 

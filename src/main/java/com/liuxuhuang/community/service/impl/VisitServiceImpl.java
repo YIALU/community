@@ -1,7 +1,7 @@
 package com.liuxuhuang.community.service.impl;
 
-import com.liuxuhuang.community.entity.Visit;
 import com.liuxuhuang.community.dao.VisitDao;
+import com.liuxuhuang.community.entity.Visit;
 import com.liuxuhuang.community.service.VisitService;
 import org.springframework.stereotype.Service;
 
@@ -49,9 +49,17 @@ public class VisitServiceImpl implements VisitService {
      * @return 实例对象
      */
     @Override
-    public Visit insert(Visit visit) {
-        this.visitDao.insert(visit);
-        return visit;
+    public boolean insert(Visit visit) {
+        int a = this.visitDao.insert(visit);
+        boolean flag = false;
+        if (a == 1) {
+            flag = true;
+        } else if (a <= 0) {
+            flag = false;
+        } else {
+            flag = false;
+        }
+        return flag;
     }
 
     /**
@@ -61,9 +69,18 @@ public class VisitServiceImpl implements VisitService {
      * @return 实例对象
      */
     @Override
-    public Visit update(Visit visit) {
-        this.visitDao.update(visit);
-        return this.queryById(visit.getId());
+    public boolean update(Visit visit) {
+        int a = -1;
+        boolean flag = false;
+        a = this.visitDao.update(visit);
+        if (a == 1) {
+            flag = true;
+        } else if (a <= 0) {
+            flag = false;
+        } else {
+            flag = false;
+        }
+        return flag;
     }
 
     /**
@@ -75,5 +92,23 @@ public class VisitServiceImpl implements VisitService {
     @Override
     public boolean deleteById(int id) {
         return this.visitDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public boolean deleteByName(String visitorName) {
+        int a = -1;
+        boolean flag = false;
+        a = this.visitDao.deleteByName(visitorName);
+        if (a == 1) {
+            flag = true;
+        } else {
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public Visit queryByName(String visitorName) {
+        return this.visitDao.queryByName(visitorName);
     }
 }

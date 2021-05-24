@@ -207,8 +207,8 @@ public class UserController {
      */
     @ApiOperation("分页查询")
     @ResponseBody
-    @RequestMapping(value = "selectPage", method = RequestMethod.GET)
-    public Map<String, Object> selectPage(Integer start, Integer limit) {
+    @RequestMapping(value = "selectPage/{start}/{limit}", method = RequestMethod.GET)
+    public Map<String, Object> selectPage(@PathVariable("start") Integer start, @PathVariable("limit") Integer limit) {
         List<User> users = userService.selectPage(start, limit);
         if (users.size() > 0) {
             map.put("code", 200);

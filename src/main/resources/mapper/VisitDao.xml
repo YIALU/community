@@ -53,6 +53,11 @@
             </if>
         </where>
     </select>
+    <select id="queryByName" resultMap="VisitMap">
+        select
+         id, visitor_name, visitor_tel, visit_reason, enter_time, leave_time
+        from community.visit where visitor_name=#{visitorName}
+    </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
@@ -107,6 +112,9 @@
     <!--通过主键删除-->
     <delete id="deleteById">
         delete from community.visit where id = #{id}
+    </delete>
+    <delete id="deleteByName">
+        delete from community.visit where visitor_name = #{visitorName}
     </delete>
 
 </mapper>

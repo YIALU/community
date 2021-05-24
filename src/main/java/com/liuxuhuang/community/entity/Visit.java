@@ -1,6 +1,9 @@
 package com.liuxuhuang.community.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -17,26 +20,34 @@ import java.io.Serializable;
 public class Visit implements Serializable {
     private static final long serialVersionUID = 328655631982382462L;
 
+    @ApiModelProperty(value = "访客编号")
     private int id;
     /**
      * 访客姓名
      */
+    @ApiModelProperty(value = "访客姓名")
     private String visitorName;
     /**
      * 访客电话
      */
+    @ApiModelProperty(value = "访客电话")
     private String visitorTel;
     /**
      * 到访原因
      */
+    @ApiModelProperty(value = "到访原因")
     private String visitReason;
     /**
      * 进入时间
      */
+    @ApiModelProperty(value = "进入时间")
     private Date enterTime;
     /**
      * 离开时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @ApiModelProperty(value = "离开时间")
     private Date leaveTime;
 
 
